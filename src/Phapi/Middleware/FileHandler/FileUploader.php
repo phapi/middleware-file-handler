@@ -11,13 +11,17 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Class Prepare
+ * File Uploader
  *
- * @category Middleware
- * @package  Phapi\Middleware\FileUploader
- * @author   Peter Ahinko <peter@avero.se>
- * @license  See license.md
- * @link     http://www.avero.se
+ * Middleware responsible for preparing the framework to handle a file upload.
+ * The middleware also checks that the mime type is allowed and that the file size
+ * is within the allowed parameter.
+ *
+ * @category Phapi
+ * @package  Phapi\Middleware\FileHandler
+ * @author   Peter Ahinko <peter@ahinko.se>
+ * @license  MIT (http://opensource.org/licenses/MIT)
+ * @link     https://github.com/phapi/middleware-file-handler
  */
 class FileUploader implements Middleware
 {
