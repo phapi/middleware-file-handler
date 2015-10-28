@@ -8,13 +8,16 @@ use Phapi\Exception\InternalServerError;
 use Zend\Diactoros\Stream;
 
 /**
- * Class File
+ * File Handler Endpoint
  *
- * @category
- * @package  Phapi\Endpoint
- * @author   Peter Ahinko <peter@avero.se>
- * @license  See license.md
- * @link     http://www.avero.se
+ * A general endpoint that can handle both PUT and GET requests from the client
+ * for uploading and downloading files.
+ *
+ * @category Phapi
+ * @package  Phapi\Middleware\FileHandler
+ * @author   Peter Ahinko <peter@ahinko.se>
+ * @license  MIT (http://opensource.org/licenses/MIT)
+ * @link     https://github.com/phapi/middleware-file-handler
  */
 class File extends Endpoint
 {
