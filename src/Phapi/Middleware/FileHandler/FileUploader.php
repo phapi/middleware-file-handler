@@ -110,7 +110,7 @@ class FileUploader implements Middleware
                 }
 
                 // Check file size
-                $fileSize = strlen($request->getBody()->getContents());
+                $fileSize = strlen($fileContent);
                 if (isset($config['maxFileSize']) && $fileSize > $config['maxFileSize']) {
                     throw new RequestEntityTooLarge(
                         'The uploaded file is to large (' . $this->formatBytes($fileSize) . ').
