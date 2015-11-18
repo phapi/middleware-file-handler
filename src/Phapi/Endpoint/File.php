@@ -76,7 +76,7 @@ class File extends Endpoint
         $fileSystem = $this->container['flySystem'];
 
         // Get the file content
-        $fileContent = $request->getBody()->getContents();
+        $fileContent = $this->request->getBody()->getContents();
 
         // Check for base64 info in the content (HTML5 FileReader API)
         if (preg_match('/base64,(.*)/', $fileContent, $match)) {
