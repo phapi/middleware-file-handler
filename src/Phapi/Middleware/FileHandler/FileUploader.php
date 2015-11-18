@@ -89,9 +89,17 @@ class FileUploader implements Middleware
                 // can get it and use it when handling the file.
                 $this->container['fileHandledConfiguration'] = $config;
 
+                // Get the file content
+                $fileContent = $request->getBody()->getContents();
+
+                // Check for base64 info in the content (HTML5 FileReader API)
+                if (preg_match('/base64,(.*)/', $fileContent, $match)) {
+                    $fileContent = $match[1];
+                }
+
                 // Check if the files real content type matches the list of supported mime types
                 $finfo = new \finfo(FILEINFO_MIME_TYPE);
-                $mimeType = $finfo->buffer($request->getBody()->getContents());
+                $mimeType = $finfo->buffer($fileContent);
 
                 // Check if file content is of allowed mime type
                 if ($mimeType !== false && !in_array($mimeType, $config['mimeTypes'])) {
