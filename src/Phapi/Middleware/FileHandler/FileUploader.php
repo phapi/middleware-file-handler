@@ -94,7 +94,7 @@ class FileUploader implements Middleware
 
                 // Check for base64 info in the content (HTML5 FileReader API)
                 if (preg_match('/base64,(.*)/', $fileContent, $match)) {
-                    $fileContent = $match[1];
+                    $fileContent = base64_decode($match[1]);
                 }
 
                 // Check if the files real content type matches the list of supported mime types
