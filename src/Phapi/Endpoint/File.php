@@ -75,8 +75,16 @@ class File extends Endpoint
         // Get the file system
         $fileSystem = $this->container['flySystem'];
 
+        // Get the file content
+        $fileContent = $request->getBody()->getContents();
+
+        // Check for base64 info in the content (HTML5 FileReader API)
+        if (preg_match('/base64,(.*)/', $fileContent, $match)) {
+            $fileContent = base64_decode($match[1]);
+        }
+        
         // Get the file content and write it to file
-        if (!$fileSystem->put($filename, $this->request->getBody()->getContents())) {
+        if (!$fileSystem->put($filename, $fileContent)) {
             throw new InternalServerError('Could not save file to storage.');
         }
 
